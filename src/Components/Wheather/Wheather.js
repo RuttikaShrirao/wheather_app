@@ -29,7 +29,6 @@ function Wheather() {
             let url=`https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=d05217870cb810410df3bc6017bd7473&units=metric`
             axios.get(url).then(response => {
 
-                console.log(response.data.weather[0].main)
                 let imgPath=''
                 if(response.data.weather[0].main=='Clear'){
                     imgPath=clear
@@ -52,17 +51,12 @@ function Wheather() {
                     imgPath=drizzle
                   
                 }
-                else{
-                    console.log('else')
-                }
-                
-
+               
                 setweather({ ...weather, celcius: response.data.main.temp, name: response.data.name, humidity: response.data.main.humidity, 
                     speed: response.data.wind.speed, image:imgPath})
               
             })
     
-                .catch(err => console.log(err))
         }
     }
 
